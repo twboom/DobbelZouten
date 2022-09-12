@@ -50,8 +50,12 @@ const negative = [
 
 const doors = document.querySelectorAll('.door');
 
-document.querySelector('#spinner').addEventListener('click', spin);
-document.querySelector('#reseter').addEventListener('click', init);
+document.getElementById('button').addEventListener('click', evt => {
+  const btn = evt.target;
+  if (btn.dataset.action === 'spin') { spin(); btn.innerHTML = 'Reset'; btn.dataset.action = 'reset' }
+  else if (btn.dataset.action === 'reset') { init(); btn.innerHTML = 'Spin'; btn.dataset.action = 'spin' };
+})
+
 function init(firstInit = true, groups = 1, duration = 1) {
   for (const door of doors) {
     if (firstInit) {
@@ -117,6 +121,7 @@ async function spin() {
     await new Promise((resolve) => setTimeout(resolve, duration * 100));
   }
 }
+
 function shuffle([...arr]) {
   let m = arr.length;
   while (m) {

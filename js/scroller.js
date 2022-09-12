@@ -16,36 +16,36 @@ const items = [
 ];
 
 const positive =[
-    'Na+',
-    'K+',
-    'NH4+',
-    'Mg+2',
-    'Al+3',
-    'Fe+2',
-    'Zn+2',
-    'Fe+3',
-    'Cu+2',
-    'Ca+2',
-    'Ba+2',
-    'Hg+2',
-    'Pb+2',
-    'Hg+',
-    'Ag+'
+    '<ion-display count="" charge="+">Na</ion-display>',
+    '<ion-display count="" charge="+">Ka</ion-display>',
+    '<ion-display count="4" charge="+">NH</ion-display>',
+    '<ion-display count="" charge="2+">Mg</ion-display>',
+    '<ion-display count="" charge="3+">Al</ion-display>',
+    '<ion-display count="" charge="2+">Fe</ion-display>',
+    '<ion-display count="" charge="2+">Zn</ion-display>',
+    '<ion-display count="" charge="3+">Fe</ion-display>',
+    '<ion-display count="" charge="2+">Cu</ion-display>',
+    '<ion-display count="" charge="2+">Ca</ion-display>',
+    '<ion-display count="" charge="2+">Ba</ion-display>',
+    '<ion-display count="" charge="2+">Hg</ion-display>',
+    '<ion-display count="" charge="2+">Pb</ion-display>',
+    '<ion-display count="" charge="+">Hg</ion-display>',
+    '<ion-display count="" charge="+">Ag</ion-display>'
 ];
 
 const negative = [
-    'NO3-',
-    'Cl-',
-    'Br-',
-    'I-',
-    'SO4-2',
-    'F-',
-    'S-2',
-    'OH-',
-    'SO3-2',
-    'CO3-2',
-    'PO4-3',
-    'O-2'
+    '<ion-display count="" charge="3-">NO</ion-display>',
+    '<ion-display count="" charge="-">Cl</ion-display>',
+    '<ion-display count="" charge="-">Br</ion-display>',
+    '<ion-display count="" charge="-">I</ion-display>',
+    '<ion-display count="4" charge="2-">SO</ion-display>',
+    '<ion-display count="" charge="-">F</ion-display>',
+    '<ion-display count="" charge="2-">S</ion-display>',
+    '<ion-display count="" charge="-">OH</ion-display>',
+    '<ion-display count="3" charge="2-">SO</ion-display>',
+    '<ion-display count="3" charge="2-">CO</ion-display>',
+    '<ion-display count="4" charge="2-">PO</ion-display>',
+    '<ion-display count="" charge="2-">O</ion-display>'
 ];
 
 const doors = document.querySelectorAll('.door');
@@ -99,7 +99,7 @@ function init(firstInit = true, groups = 1, duration = 1) {
       box.classList.add('box');
       box.style.width = door.clientWidth + 'px';
       box.style.height = door.clientHeight + 'px';
-      box.textContent = pool[i];
+      box.innerHTML = pool[i];
       boxesClone.appendChild(box);
     }
     boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;

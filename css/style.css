@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 body {
   width: 100vw;
@@ -21,4 +22,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+header {
+  position: absolute;
+  width: 50%;
+  transform: translateX(50%);
+  top: 10%;
+}
+
+h1.header {
+  text-align: center;
+  font-family: 'Fredoka One';
+  font-size: 80px;
+  margin: 0;
+  transition: transform 0.5s;
+}
+
+h1.header:hover {
+  transform: rotate(-7deg) scale(1.1);
 }

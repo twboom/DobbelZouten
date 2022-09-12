@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 body {
   width: 100vw;
@@ -35,7 +35,7 @@ body {
 }
 
 .box {
-    font-family: 'Bebas Neue';
+    font-family: 'Ubuntu';
     font-size: 100px;
     margin: 0;
     display: flex;

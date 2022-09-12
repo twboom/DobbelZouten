@@ -1,20 +1,3 @@
-const items = [
-  '🍭',
-  '❌',
-  '⛄️',
-  '🦄',
-  '🍌',
-  '💩',
-  '👻',
-  '😻',
-  '💵',
-  '🤡',    
-  '🦖',
-  '🍎',
-  '😂',
-  '🖕',
-];
-
 const positive =[
     '<ion-display count="" charge="+">Na</ion-display>',
     '<ion-display count="" charge="+">Ka</ion-display>',

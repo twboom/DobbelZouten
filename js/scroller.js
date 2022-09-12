@@ -95,7 +95,7 @@ function init(firstInit = true, groups = 1, duration = 1) {
       );
     }
     for (let i = pool.length - 1; i >= 0; i--) {
-      const box = document.createElement('div');
+      const box = document.createElement('p');
       box.classList.add('box');
       box.style.width = door.clientWidth + 'px';
       box.style.height = door.clientHeight + 'px';

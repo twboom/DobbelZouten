@@ -5,7 +5,13 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: #1a2b45;
+  background: linear-gradient(
+    to right,
+    #EB1D36 0%,
+    #EB1D36 50%,
+    #FFC23C 50%,
+    #FFC23C 100%
+  );
 }
 
 #app {

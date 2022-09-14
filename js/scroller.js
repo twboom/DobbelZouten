@@ -1,33 +1,30 @@
 const positive =[
     '<ion-display count="" charge="+">Na</ion-display>',
-    '<ion-display count="" charge="+">Ka</ion-display>',
+    '<ion-display count="" charge="+">K</ion-display>',
     '<ion-display count="4" charge="+">NH</ion-display>',
     '<ion-display count="" charge="2+">Mg</ion-display>',
     '<ion-display count="" charge="3+">Al</ion-display>',
     '<ion-display count="" charge="2+">Fe</ion-display>',
-    '<ion-display count="" charge="2+">Zn</ion-display>',
     '<ion-display count="" charge="3+">Fe</ion-display>',
     '<ion-display count="" charge="2+">Cu</ion-display>',
     '<ion-display count="" charge="2+">Ca</ion-display>',
     '<ion-display count="" charge="2+">Ba</ion-display>',
-    '<ion-display count="" charge="2+">Hg</ion-display>',
-    '<ion-display count="" charge="2+">Pb</ion-display>',
-    '<ion-display count="" charge="+">Hg</ion-display>',
-    '<ion-display count="" charge="+">Ag</ion-display>'
+    '<ion-display count="" charge="4+">Pb</ion-display>',
+    '<ion-display count="" charge="2+">Pb</ion-display>'
 ];
 
 const negative = [
-    '<ion-display count="" charge="3-">NO</ion-display>',
+    '<ion-display count="3" charge="-">NO</ion-display>',
+    '<ion-display count="2" charge="-">NO</ion-display>',
     '<ion-display count="" charge="-">Cl</ion-display>',
     '<ion-display count="" charge="-">Br</ion-display>',
     '<ion-display count="" charge="-">I</ion-display>',
     '<ion-display count="4" charge="2-">SO</ion-display>',
-    '<ion-display count="" charge="-">F</ion-display>',
-    '<ion-display count="" charge="2-">S</ion-display>',
+    '<ion-display count="3" charge="-">HCO</ion-display>',
     '<ion-display count="" charge="-">OH</ion-display>',
     '<ion-display count="3" charge="2-">SO</ion-display>',
     '<ion-display count="3" charge="2-">CO</ion-display>',
-    '<ion-display count="4" charge="2-">PO</ion-display>',
+    '<ion-display count="4" charge="3-">PO</ion-display>',
     '<ion-display count="" charge="2-">O</ion-display>'
 ];
 

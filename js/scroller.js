@@ -33,7 +33,7 @@ const doors = document.querySelectorAll('.door');
 document.getElementById('button').addEventListener('click', evt => {
   const btn = evt.target;
   if (btn.dataset.action === 'spin') { spin(); btn.innerHTML = 'Reset'; btn.dataset.action = 'reset' }
-  else if (btn.dataset.action === 'reset') { init(); btn.innerHTML = 'Spin'; btn.dataset.action = 'spin' };
+  else if (btn.dataset.action === 'reset') { init(); btn.innerHTML = 'Dobbel!'; btn.dataset.action = 'spin' };
 })
 
 function init(firstInit = true, groups = 1, duration = 1) {

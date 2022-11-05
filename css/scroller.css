@@ -1,43 +1,43 @@
 .doors {
     display: flex;
-  }
+}
   
-  .door {
-    background: #fafafa;
-    width: 250px;
-    height: 275px;
-    overflow: hidden;
-    border-radius: 5px;
-    margin: 5px;
-  }
-  
-  .boxes {
-    transition: transform 1s ease-in-out;
-  }
-  
-  .box {
-      font-family: 'Ubuntu';
-      font-size: 100px;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 3rem;
-  }
-  
-  ion-display {
-    font-size: 60px;
-  }
-  
-  .buttons {
-    margin: 1rem 0 2rem 0;
-  }
-  
-  button {
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin: 0 0.2rem;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-  }
+.door {
+  background: #fafafa;
+  width: 250px;
+  height: 275px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.boxes {
+  transition: transform 1s ease-in-out;
+}
+
+.box {
+    font-family: 'Ubuntu';
+    font-size: 100px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+ion-display {
+  font-size: 60px;
+}
+
+.buttons {
+  margin: 1rem 0 2rem 0;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin: 0 0.2rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+}

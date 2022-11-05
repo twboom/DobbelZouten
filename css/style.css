@@ -2,42 +2,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 body {
-  /* width: 100vw;
-  height: 100vh; */
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(
-    to left,
-    #EB1D36 0%,
-    #EB1D36 50%,
-    #FFC23C 50%,
-    #FFC23C 100%
-  );
+    /* width: 100vw;
+    height: 100vh; */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(
+        to left,
+        #EB1D36 0%,
+        #EB1D36 50%,
+        #FFC23C 50%,
+        #FFC23C 100%
+    );
 }
 
 #app {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 h1.header {
-  text-align: center;
-  font-family: 'Fredoka One';
-  font-size: 80px;
-  margin: 0;
-  transition: transform 0.5s;
-  width: fit-content;
-  margin: auto;
+    text-align: center;
+    font-family: 'Fredoka One';
+    font-size: 80px;
+    margin: 0;
+    transition: transform 0.5s;
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
 }
 
 h1.header:hover {
-  transform: rotate(-7deg) scale(1.1);
+    transform: rotate(-7deg) scale(1.1);
 }

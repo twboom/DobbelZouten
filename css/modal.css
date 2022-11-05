@@ -1,0 +1,39 @@
+div#modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #00000077;
+    backdrop-filter: blur(4px);
+}
+
+div#menu {
+    box-sizing: border-box;
+    width: 50%;
+    height: 85%;
+    margin: 5% auto;
+    padding: 2.5%;
+
+    border-radius: 8px;
+
+    background-color: white;
+}
+
+h1.menu {
+    margin: 0;
+    font-family: 'Fredoka One';
+    text-align: center;
+    font-size: 60px;
+}
+
+div#menu-footer {
+    position: fixed;
+    bottom: 10%;
+
+    width: 45%;
+
+    display: flex;
+    justify-content: center;
+}

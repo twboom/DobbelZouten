@@ -7,12 +7,14 @@
     <title>Dobbel Zouten</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/scroller.css">
+    <link rel="stylesheet" href="css/modal.css">
     <script defer src="js/scroller.js"></script>
     <script defer src="js/ionComponent.js"></script>
+    <script defer src="js/modal.js"></script>
 </head>
 <body>
     <header>
-        <h1 class="header">Dobbel Zouten</h1>
+        <h1 class="header" id="menu-show">Dobbel Zouten</h1>
     </header>
     <div id="app">
         <div class="doors">
@@ -29,8 +31,18 @@
               <button id="button" data-action="spin">Dobbel!</button>
         </div>
     </div>
-    <div id="menu">
-        <h1 class="menu">Menu</h1>
+    <div id="modal" style="display: none;">
+        <div id="menu">
+            <div id="menu-header">
+                <h1 class="menu">Dobbel Zouten</h1>
+            </div>
+            <div id="menu-content">
+                <p>Je hebt mij gevonden!</p>
+            </div>
+            <div id="menu-footer">
+                <button id="menu-hide">Sluit</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

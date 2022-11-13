@@ -7,18 +7,29 @@ div#modal {
 
     background-color: #00000077;
     backdrop-filter: blur(4px);
+    animation: background-fade-in 1s ease;
 }
 
 div#menu {
+    position: inherit;
+    left: 25%;
+    top: 5%;
     box-sizing: border-box;
     width: 50%;
     height: 85%;
-    margin: 5% auto;
     padding: 2.5%;
 
     border-radius: 8px;
 
     background-color: white;
+
+    animation: drop-from-top 0.5s ease;
+}
+
+div#menu-header {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 h1.menu {
@@ -28,12 +39,38 @@ h1.menu {
     font-size: 60px;
 }
 
-div#menu-footer {
-    position: fixed;
-    bottom: 10%;
+button#menu-hide {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
 
-    width: 45%;
+@keyframes background-fade-in {
+    0% {
+        backdrop-filter: blur(0);
+        background-color: #00000000;
+    }
 
-    display: flex;
-    justify-content: center;
+    100% {
+        backdrop-filter: blur(4px);
+        background-color: #00000077;
+    }
+}
+
+@keyframes drop-from-top {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }

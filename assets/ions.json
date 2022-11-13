@@ -1,0 +1,160 @@
+{
+    "positive": [
+        {
+            "elements": [
+                ["al"]
+            ],
+            "charge": "3+"
+        },
+        {
+            "elements": [
+                ["ba"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["ca"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["cu"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["fe"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["fe"]
+            ],
+            "charge": "3+"
+        },
+        {
+            "elements": [
+                ["k"]
+            ],
+            "charge": "+"
+        },
+        {
+            "elements": [
+                ["mg"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["na"]
+            ],
+            "charge": "+"
+        },
+        {
+            "elements": [
+                ["n"],
+                ["h", "4"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["pb"]
+            ],
+            "charge": "2+"
+        },
+        {
+            "elements": [
+                ["pb"]
+            ],
+            "charge": "4+"
+        }
+    ],
+    "negative": [
+        {
+            "elements": [
+                ["n"],
+                ["o", "3"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["n"],
+                ["o", "2"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["cl", "2"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["br"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["i"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["s"],
+                ["o", "4"]
+            ],
+            "charge": "2-"
+        },
+        {
+            "elements": [
+                ["h"],
+                ["c"],
+                ["o", "3"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["0"],
+                ["h"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["s"],
+                ["o", "3"]
+            ],
+            "charge": "2-"
+        },
+        {
+            "elements": [
+                ["c"],
+                ["o", "3"]
+            ],
+            "charge": "2-"
+        },
+        {
+            "elements": [
+                ["p"],
+                ["o", "4"]
+            ],
+            "charge": "-"
+        },
+        {
+            "elements": [
+                ["o"]
+            ],
+            "charge":"2-"
+        }
+    ]
+}

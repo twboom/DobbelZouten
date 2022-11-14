@@ -1,5 +1,5 @@
 class Ion {
-    constructor(elements, charge) {
+    constructor({elements, charge}) {
         this.elements = elements;
         this.charge = charge;
     };
@@ -7,7 +7,7 @@ class Ion {
     html() {
         // Empty string
         let text = ''
-        console.log(this.elements)
+        
         // Elements
         for (let i = 0; i < this.elements.length; i++) {
             const el = this.elements[i];
@@ -17,25 +17,6 @@ class Ion {
         
         // Charge
         text = text.concat(`<sup>${this.charge}</sup>`)
-        return text
+        return `<p class="ion">${text}</p>`
     };
 };
-
-class IonDisplay extends HTMLElement {
-    constructor() {
-        super();
-
-        // Get element
-        const element = this.innerText;
-        const count = this.hasAttribute('count') ? this.getAttribute('count') : '';
-        const charge = this.hasAttribute('charge') ? this.getAttribute('charge') : ''
-
-        // Create the text
-        const text = `${element}<sub>${count}</sub><sup>${charge}</sup>`;
-
-        // Replace innerHTML with the new text
-        this.innerHTML = text;
-    };
-};
-
-customElements.define('ion-display', IonDisplay)

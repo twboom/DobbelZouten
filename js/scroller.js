@@ -1,32 +1,4 @@
-const positive =[
-    '<ion-display count="" charge="+">Na</ion-display>',
-    '<ion-display count="" charge="+">K</ion-display>',
-    '<ion-display count="4" charge="+">NH</ion-display>',
-    '<ion-display count="" charge="2+">Mg</ion-display>',
-    '<ion-display count="" charge="3+">Al</ion-display>',
-    '<ion-display count="" charge="2+">Fe</ion-display>',
-    '<ion-display count="" charge="3+">Fe</ion-display>',
-    '<ion-display count="" charge="2+">Cu</ion-display>',
-    '<ion-display count="" charge="2+">Ca</ion-display>',
-    '<ion-display count="" charge="2+">Ba</ion-display>',
-    '<ion-display count="" charge="4+">Pb</ion-display>',
-    '<ion-display count="" charge="2+">Pb</ion-display>'
-];
-
-const negative = [
-    '<ion-display count="3" charge="-">NO</ion-display>',
-    '<ion-display count="2" charge="-">NO</ion-display>',
-    '<ion-display count="" charge="-">Cl</ion-display>',
-    '<ion-display count="" charge="-">Br</ion-display>',
-    '<ion-display count="" charge="-">I</ion-display>',
-    '<ion-display count="4" charge="2-">SO</ion-display>',
-    '<ion-display count="3" charge="-">HCO</ion-display>',
-    '<ion-display count="" charge="-">OH</ion-display>',
-    '<ion-display count="3" charge="2-">SO</ion-display>',
-    '<ion-display count="3" charge="2-">CO</ion-display>',
-    '<ion-display count="4" charge="3-">PO</ion-display>',
-    '<ion-display count="" charge="2-">O</ion-display>'
-];
+let ionSet = {};
 
 const doors = document.querySelectorAll('.door');
 
@@ -45,8 +17,8 @@ function init(firstInit = true, groups = 1, duration = 1) {
     }
 
     let itemPool;
-    if (door.classList.contains('negative')) { itemPool = negative }
-    else if (door.classList.contains('positive')) { itemPool = positive };
+    if (door.classList.contains('negative')) { itemPool = ionSet.negative }
+    else if (door.classList.contains('positive')) { itemPool = ionSet.positive };
 
     const boxes = door.querySelector('.boxes');
     const boxesClone = boxes.cloneNode(false);
@@ -83,7 +55,12 @@ function init(firstInit = true, groups = 1, duration = 1) {
       box.classList.add('box');
       box.style.width = door.clientWidth + 'px';
       box.style.height = door.clientHeight + 'px';
-      box.innerHTML = pool[i];
+      if (pool[i] == '❓') {
+        box.innerHTML = pool[i]
+      } else {
+        const ion = new Ion(pool[i])
+        box.innerHTML = ion.html();
+      };
       boxesClone.appendChild(box);
     }
     boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
@@ -110,4 +87,7 @@ function shuffle([...arr]) {
   }
   return arr;
 }
-init();
+
+fetch('assets/ions.json')
+  .then(r => r.json())
+  .then(json => { ionSet = json; init() })

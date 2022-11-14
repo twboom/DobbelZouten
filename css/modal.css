@@ -46,6 +46,8 @@ button#menu-hide {
     background-color: transparent;
     margin: 0;
     padding: 0;
+    border: none;
+    cursor: pointer;
 }
 
 @keyframes background-fade-in {

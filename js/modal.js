@@ -33,3 +33,6 @@ function hideModal() {
 
 document.getElementById('menu-show').addEventListener('click', showModal);
 document.getElementById('menu-hide').addEventListener('click', hideModal);
+document.getElementById('modal').addEventListener('click', evt => {
+    if (evt.target === document.getElementById('modal')) { hideModal(); };
+});

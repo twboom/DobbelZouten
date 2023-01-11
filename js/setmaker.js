@@ -57,6 +57,9 @@ function main() {
             handleFinishInput();
         };
     });
+    document.getElementById('download-set').addEventListener('click', _ => {
+        downloadJSON(generateJSONDataURI());
+    })
 };
 
 main();

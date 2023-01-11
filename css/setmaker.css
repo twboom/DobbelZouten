@@ -1,3 +1,16 @@
+* {
+    font-family: 'Ubuntu';
+}
+
+div#set-display {
+    display: flex;
+    width: 50%;
+}
+
+div.ion-category {
+    width: 50%;
+};
+
 p.ion {
     display: inline-block;
 }
@@ -5,4 +18,14 @@ p.ion {
 span.delete-ion {
     float: right;
     cursor: pointer;
+}
+
+h1.ion-category {
+    text-align: center;
+    font-family: 'Fredoka One';
+}
+
+ul.ion-list:empty::after {
+    content: "Hier staat nog niets...";
+    opacity: 0.6;
 }

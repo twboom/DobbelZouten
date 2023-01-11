@@ -72,7 +72,7 @@ span#erease-history:hover {
 ul#history {
     font-family: 'Ubuntu';
     overflow-y: auto;
-    height: 90vh;
+    height: 95%;
 }
 
 ul#history:empty::after {

@@ -75,6 +75,11 @@ ul#history {
     height: 90vh;
 }
 
+ul#history:empty::after {
+    content: "Er is nog geen geschiedenis...";
+    opacity: 0.6
+}
+
 li.history-item span.ion::before {
     content: " + ";
     font-weight: 900;

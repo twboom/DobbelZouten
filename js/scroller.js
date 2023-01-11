@@ -9,6 +9,7 @@ document.getElementById('button').addEventListener('click', evt => {
 })
 
 function init(firstInit = true, groups = 1, duration = 1) {
+  const ions = [];
   for (const door of doors) {
     if (firstInit) {
       door.dataset.spinned = '0';
@@ -66,17 +67,23 @@ function init(firstInit = true, groups = 1, duration = 1) {
     boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
     boxesClone.style.transform = `translateY(-${door.clientHeight * (pool.length - 1)}px)`;
     door.replaceChild(boxesClone, boxes);
+    
+    ions.push(pool[pool.length - 1])
   }
+
+  return ions
 }
 async function spin() {
-  init(false, 1, 2);
-  
+  ions = init(false, 1, 2);
+
   for (const door of doors) {
     const boxes = door.querySelector('.boxes');
     const duration = parseInt(boxes.style.transitionDuration);
     boxes.style.transform = 'translateY(0)';
     await new Promise((resolve) => setTimeout(resolve, duration * 100));
   }
+
+  addToHistory(ions)
 }
 
 function shuffle([...arr]) {

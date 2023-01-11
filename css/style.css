@@ -15,6 +15,7 @@ body {
         #FFC23C 50%,
         #FFC23C 100%
     );
+    overflow: hidden;
 }
 
 #app {

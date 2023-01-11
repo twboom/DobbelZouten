@@ -1,0 +1,90 @@
+div.action-button {
+    position: absolute;
+    top: 5%;
+    right: 0;
+
+    width: 64px;
+    height: 64px;
+
+    padding: 32px;
+    padding-right: 32px;
+
+    background-color: white;
+
+    border-radius: 16px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    transition: padding-right 0.2s, right 0.25s;
+}
+
+div.action-button:hover {
+    padding-right: 48px;
+}
+
+div.action-button:active svg {
+    transform: scale(0.95);
+}
+
+div.action-button > svg {
+    transition: transform 0.2s;
+}
+
+div.action-button.open {
+    right: 20vw;
+}
+
+div#history-container-outer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: transform 0.25s;
+}
+
+div#history-container-outer.hidden {
+    transform: translateX(100%);
+}
+
+div#history-container {
+    box-sizing: border-box;
+    background-color: white;
+    height: 100vh;
+    width: 20vw;
+    padding: 32px;
+}
+
+h1.history {
+    margin: 0;
+    font-family: 'Fredoka One';
+    text-align: center;
+}
+
+span#erease-history {
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+span#erease-history:hover {
+    transform: scale(1.2);
+}
+
+ul#history {
+    font-family: 'Ubuntu';
+    overflow-y: auto;
+    height: 90vh;
+}
+
+ul#history:empty::after {
+    content: "Er is nog geen geschiedenis...";
+    opacity: 0.6
+}
+
+li.history-item span.ion::before {
+    content: " + ";
+    font-weight: 900;
+}
+
+li.history-item span.ion:first-child::before {
+    content: "";
+}

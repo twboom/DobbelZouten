@@ -12,7 +12,7 @@ class Ion {
         for (let i = 0; i < this.elements.length; i++) {
             const el = this.elements[i];
             text = text.concat(el[0].charAt(0).toUpperCase() + el[0].slice(1));
-            if (el[1]) { text = text.concat(`<sub>${el[1]}</sub>`) }
+            if (el[1] && el[1] != 1) { text = text.concat(`<sub>${el[1]}</sub>`) }
         };
         
         // Charge

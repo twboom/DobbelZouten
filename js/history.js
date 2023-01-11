@@ -6,7 +6,6 @@ function addToHistory(ions) {
     container.classList.add('history-item');
 
     for (const ion of ions) {
-        console.log(ion)
         const el = new Ion(ion).html(true);
         container.innerHTML += el;
     };
@@ -34,5 +33,5 @@ function toggleHistory() {
     };
 };
 
-document.getElementById('open-history').addEventListener('click', toggleHistory)
-document.getElementById('erease-history').addEventListener('click', ereaseHistory)
+document.getElementById('open-history').addEventListener('click', toggleHistory);
+document.getElementById('erease-history').addEventListener('click', ereaseHistory);

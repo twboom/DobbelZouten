@@ -78,7 +78,10 @@ function main() {
             const json = JSON.parse(text);
             if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
                 const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
-                if (!areYouSure) { return; };
+                if (!areYouSure) {
+                    evt.target.value = '';
+                    return;
+                };
             }
             renderSubset(json.positive);
             renderSubset(json.negative);

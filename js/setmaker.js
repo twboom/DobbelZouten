@@ -1,4 +1,4 @@
-const currentIonSet = {
+let currentIonSet = {
     "positive": [],
     "negative": [],
 };
@@ -51,6 +51,12 @@ function handleFinishInput() {
     inputEl.value = '';
 };
 
+function renderSubset(subset) {
+    for (let i = 0; i < subset.length; i++) {
+        addToSet(subset[i])
+    };
+};
+
 function main() {
     document.getElementById('text-input').addEventListener('keydown', evt => {
         if (evt.key == 'Enter') {
@@ -58,8 +64,26 @@ function main() {
         };
     });
     document.getElementById('download-set').addEventListener('click', _ => {
+        if (currentIonSet.positive.length === 0 || currentIonSet.negative.length === 0) {
+            alert('Je kan dit niet downloaden omdat dit geen geldige set is!\nEen of meerdere rijen zijn leeg.')
+            return;
+        };
         downloadJSON(generateJSONDataURI());
     })
+
+    document.getElementById('setfile').addEventListener('change', evt => {
+        const file = evt.target.files[0];
+        if (file === undefined) { return; };
+        file.text().then(text => {
+            const json = JSON.parse(text);
+            if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
+                const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
+                if (!areYouSure) { return; };
+            }
+            renderSubset(json.positive);
+            renderSubset(json.negative);
+        });
+    });
 };
 
 main();

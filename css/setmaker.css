@@ -1,0 +1,8 @@
+p.ion {
+    display: inline-block;
+}
+
+span.delete-ion {
+    float: right;
+    cursor: pointer;
+}

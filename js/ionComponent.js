@@ -4,7 +4,7 @@ class Ion {
         this.charge = charge;
     };
 
-    html() {
+    html(as_span=false) {
         // Empty string
         let text = ''
         
@@ -17,6 +17,9 @@ class Ion {
         
         // Charge
         text = text.concat(`<sup>${this.charge}</sup>`)
+        if (as_span) {
+            return `<span class="ion">${text}</span>`
+        }
         return `<p class="ion">${text}</p>`
     };
 };

@@ -46,19 +46,15 @@ h1.header:hover {
     transform: rotate(-7deg) scale(1.1);
 }
 
-p#author {
+p#author, p#links {
     font-family: 'Roboto Slab';
     text-align: center;
 }
 
-a#author-link {
+p#author > a, p#links > a {
     color: black;
 }
 
-p#menu-text {
+label {
     font-family: 'Ubuntu';
-}
-
-div#cake {
-    font-family: 'Roboto Mono';
 }

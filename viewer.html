@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="css/setmaker.css">
     <script defer src="js/ionComponent.js"></script>
     <script defer src="js/modal.js"></script>
-    <script src="js/text-ion-parser.js"></script>
-    <script defer src="js/setmaker.js"></script>
+    <script defer src="js/viewer.js"></script>
 </head>
 <body>
     <header>
@@ -20,12 +19,8 @@
     </header>
     <div id="app" class="app-fill">
         <div class="input-field">
-            <label for="text-input">Vul hier een Ion-String in:</label>
-            <input type="text" name="text-input" id="text-input">
-        </div>
-        <div class="input-field">
-            <label for="download-set">Download de set: </label>
-            <input type="button" value="Download" id="download-set">
+            <label for="setfile">Upload hier je set-bestand:</label>
+            <input type="file" name="setfile" id="setfile">
         </div>
         <div id="set-display">
             <div class="ion-category">
@@ -46,20 +41,8 @@
                 <h1 class="menu">Dobbel Zouten</h1>
             </div>
             <div id="menu-content">
-                <p id="author">Gemaakt met ❤️ door <a href="https://thijsboom.nl" id="author-link">Thijs Boom</a></p>
-                <p id="menu-text">
-                    Het is hier nog niet helemaal af... maar hier heb je in ieder geval alvast een taartje!
-                </p>
-                <div id="cake">
-                    <p><pre>
-   $$  $$  $$
- __||__||__||__
-| * * * * * * *|
-|* * * * * * * |
-| * * * * * * *|
-|______________|
-                    </pre></p>
-                </div>
+                <p id="author">Gemaakt met ❤️ door <a href="http://thijsboom.nl" id="author-link">Thijs Boom</a></p>
+                <p id="links"><a href="/">Dobbel Pagina</a> | <a href="/editor.html">Set-Editor</a></p>
             </div>
             
         </div>

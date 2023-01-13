@@ -6,3 +6,7 @@ body {
 header {
     margin: 2.5vh 0;
 }
+
+ul {
+    text-align: left;
+}

@@ -1,14 +1,12 @@
-let ionSet = {};
+import { Ion } from "../common/ionComponent.js"
+import * as history from "./history.js"
+import { currentIonSet } from "./main.js"
+
+let ionSet;
 
 const doors = document.querySelectorAll('.door');
 
-document.getElementById('button').addEventListener('click', evt => {
-  const btn = evt.target;
-  if (btn.dataset.action === 'spin') { spin(); btn.innerHTML = 'Reset'; btn.dataset.action = 'reset' }
-  else if (btn.dataset.action === 'reset') { init(); btn.innerHTML = 'Dobbel!'; btn.dataset.action = 'spin' };
-})
-
-function init(firstInit = true, groups = 1, duration = 1) {
+export function primeScrollers(firstInit = true, groups = 1, duration = 1) {
   const ions = [];
   for (const door of doors) {
     if (firstInit) {
@@ -74,7 +72,7 @@ function init(firstInit = true, groups = 1, duration = 1) {
   return ions
 }
 async function spin() {
-  ions = init(false, 1, 2);
+  let ions = primeScrollers(false, 1, 2);
 
   for (const door of doors) {
     const boxes = door.querySelector('.boxes');
@@ -83,7 +81,7 @@ async function spin() {
     await new Promise((resolve) => setTimeout(resolve, duration * 100));
   }
 
-  addToHistory(ions)
+  history.add(ions)
 }
 
 function shuffle([...arr]) {
@@ -95,6 +93,16 @@ function shuffle([...arr]) {
   return arr;
 }
 
-fetch('assets/ions.json')
-  .then(r => r.json())
-  .then(json => { ionSet = json; init() })
+export function init() {
+  ionSet = currentIonSet;
+
+  document.getElementById('button').addEventListener('click', evt => {
+    const btn = evt.target;
+    if (btn.dataset.action === 'spin') { spin(); btn.innerHTML = 'Reset'; btn.dataset.action = 'reset' }
+    else if (btn.dataset.action === 'reset') { primeScrollers(); btn.innerHTML = 'Dobbel!'; btn.dataset.action = 'spin' };
+  })
+  
+  fetch('assets/ions.json')
+    .then(r => r.json())
+    .then(json => { ionSet = json; primeScrollers(); }) 
+};

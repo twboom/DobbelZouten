@@ -1,3 +1,6 @@
+import { parseIonString } from "./text-ion-parser.js";
+import { Ion } from "../common/ionComponent.js";
+
 let currentIonSet = {
     "positive": [],
     "negative": [],
@@ -57,7 +60,7 @@ function renderSubset(subset) {
     };
 };
 
-function main() {
+export function init() {
     document.getElementById('text-input').addEventListener('keydown', evt => {
         if (evt.key == 'Enter') {
             handleFinishInput();
@@ -88,5 +91,3 @@ function main() {
         });
     });
 };
-
-main();

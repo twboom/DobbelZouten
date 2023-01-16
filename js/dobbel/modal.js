@@ -20,19 +20,21 @@ const modalExitTiming = {
     easing: 'ease',
 }
 
-function showModal() {
+export function show() {
     document.getElementById('modal').style.display = 'block';
 };
 
-function hideModal() {
+export function hide() {
     document.getElementById('modal').animate(modalExitKeyframes, modalExitTiming);
     document.getElementById('menu').animate(menuExitKeyframes, menuExitTiming).addEventListener('finish', _ => {
         document.getElementById('modal').style.display = 'none';
     });
 };
 
-document.getElementById('menu-show').addEventListener('click', showModal);
-document.getElementById('menu-hide').addEventListener('click', hideModal);
-document.getElementById('modal').addEventListener('click', evt => {
-    if (evt.target === document.getElementById('modal')) { hideModal(); };
-});
+export function init() {
+    document.getElementById('menu-show').addEventListener('click', show);
+    document.getElementById('menu-hide').addEventListener('click', hide);
+    document.getElementById('modal').addEventListener('click', evt => {
+        if (evt.target === document.getElementById('modal')) { hide(); };
+    });
+};

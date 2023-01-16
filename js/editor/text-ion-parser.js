@@ -1,4 +1,4 @@
-function parseIonString(ionString) {
+export function parseIonString(ionString) {
     // Ion structure
     const ion = {
         "elements": [],

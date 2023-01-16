@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dobbel Zouten</title>
+    <title>Set Editor | Dobbel Zouten</title>
     <link rel="stylesheet" href="css/page.css">
     <link rel="stylesheet" href="css/editor.css">
     <script defer type="module" src="js/editor/main.js"></script>
 </head>
 <body>
     <header>
-        <h1 class="header" id="menu-show">Dobbel Zouten</h1>
+        <section id="header-left">
+            <h1>DobbelZouten</h1>
+        </section>
+        <section id="header-center">
+            <h1>Set Editor</h1>
+        </section>
+        <section id="header-right">
+            <nav>
+                <a href="/">Dobbelen!</a>
+                <a href="/editor.html" class="current">Set Editor</a>
+            </nav>
+        </section>
     </header>
     <div id="app" class="app-fill">
         <div class="input-field">
@@ -38,21 +49,6 @@
             <div class="ion-category">
                 <h1 class="ion-category">Negatieve ionen</h1>
                 <ul id="negative-ions" class="ion-list"></ul>
-            </div>
-        </div>
-    </div>
-    <div id="modal" style="display: none;">
-        <div id="menu">
-            <button id="menu-hide">❌</button>
-            <div id="menu-header">
-                <h1 class="menu">Dobbel Zouten</h1>
-            </div>
-            <div id="menu-content">
-                <p id="author">Gemaakt met ❤️ door <a href="http://thijsboom.nl" id="author-link">Thijs Boom</a></p>
-                <p id="links"><a href="/">Dobbel Pagina</a> | <a href="/editor.html">Set-Editor</a></p>
-                <ul>
-                    <li><a href="/assets/ions.json" download="DobbelZouten-Orgineel.json">Download de orginele Ionen-Set</a></li>
-                </ul>
             </div>
         </div>
     </div>

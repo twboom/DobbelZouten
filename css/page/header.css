@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFC23C;
+    margin: 0 0 16px 0;
+    padding: 16px 8px;
+}
+
+header > section {
+    width: 33%;
+}
+
+header h1 {
+    font-family: 'Fredoka One';
+    font-size: 48px;
+    margin: 0;
+}
+
+section#header-center {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav > a {
+    color: white;
+    background-color: #EB1D36;
+    padding: 12px 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Fredoka One';
+    border-radius: 8px;
+    transition: 0.2s color, 0.2s background-color;
+}
+
+nav > a.current, nav > a:hover {
+    color: #EB1D36;
+    background-color: white;
+}

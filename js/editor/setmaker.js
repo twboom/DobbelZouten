@@ -66,13 +66,20 @@ export function init() {
             handleFinishInput();
         };
     });
+
+    document.getElementById('finish-input').addEventListener('click', handleFinishInput)
+
     document.getElementById('download-set').addEventListener('click', _ => {
         if (currentIonSet.positive.length === 0 || currentIonSet.negative.length === 0) {
             alert('Je kan dit niet downloaden omdat dit geen geldige set is!\nEen of meerdere rijen zijn leeg.')
             return;
         };
         downloadJSON(generateJSONDataURI());
-    })
+    });
+
+    document.getElementById('upload-set').addEventListener('click', _ => {
+        document.getElementById('setfile').click();
+    });
 
     document.getElementById('setfile').addEventListener('change', evt => {
         const file = evt.target.files[0];

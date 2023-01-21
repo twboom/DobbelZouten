@@ -1,4 +1,4 @@
-class Ion {
+export class Ion {
     constructor({elements, charge}) {
         this.elements = elements;
         this.charge = charge;

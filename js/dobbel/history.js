@@ -1,7 +1,9 @@
+import { Ion } from "../common/ionComponent.js"
+
 // Where the history is written
 let history = [];
 
-function addToHistory(ions) {
+export function add(ions) {
     const container = document.createElement('li');
     container.classList.add('history-item');
 
@@ -13,7 +15,7 @@ function addToHistory(ions) {
     document.getElementById('history').appendChild(container);
 };
 
-function ereaseHistory() {
+function erease() {
     const areYouSure = confirm('Weet je zeker dat je de geschiedenis wilt verwijderen?');
     if (!areYouSure) { return };
 
@@ -33,5 +35,9 @@ function toggleHistory() {
     };
 };
 
-document.getElementById('open-history').addEventListener('click', toggleHistory);
-document.getElementById('erease-history').addEventListener('click', ereaseHistory);
+export function init() {
+    document.getElementById('open-history').addEventListener('click', toggleHistory);
+    document.getElementById('erease-history').addEventListener('click', erease);
+};
+
+init();

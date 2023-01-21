@@ -1,0 +1,57 @@
+* {
+    font-family: 'Ubuntu';
+}
+
+div.split-container {
+    display: flex;
+    width: 50%;
+}
+
+div.split {
+    width: 50%;
+};
+
+p.ion {
+    display: inline-block;
+}
+
+span.delete-ion {
+    float: right;
+    cursor: pointer;
+}
+
+h1.ion-category {
+    text-align: center;
+    font-family: 'Fredoka One';
+}
+
+ul.ion-list:empty::after {
+    content: "Hier staat nog niets...";
+    opacity: 0.6;
+}
+
+div.input-field > div {
+    margin: auto;
+}
+
+p.svg-label {
+    text-align: center;
+}
+
+div.svg-button {
+    color: white;
+    background-color: #EB1D36;
+    padding: 24px;
+    border-radius: 8px;
+    transition: 0.2s color, 0.2s background-color;
+    width: 32px;
+}
+
+div.svg-button > svg {
+    filter: grayscale(1) invert(1);
+    transition: transform 0.2s;
+}
+
+div.svg-button:hover > svg {
+    transform: scale(1.1);
+}

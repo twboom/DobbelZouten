@@ -1,3 +1,6 @@
+import { parseIonString } from "./text-ion-parser.js";
+import { Ion } from "../common/ionComponent.js";
+
 let currentIonSet = {
     "positive": [],
     "negative": [],
@@ -57,19 +60,26 @@ function renderSubset(subset) {
     };
 };
 
-function main() {
+export function init() {
     document.getElementById('text-input').addEventListener('keydown', evt => {
         if (evt.key == 'Enter') {
             handleFinishInput();
         };
     });
+
+    document.getElementById('finish-input').addEventListener('click', handleFinishInput)
+
     document.getElementById('download-set').addEventListener('click', _ => {
         if (currentIonSet.positive.length === 0 || currentIonSet.negative.length === 0) {
             alert('Je kan dit niet downloaden omdat dit geen geldige set is!\nEen of meerdere rijen zijn leeg.')
             return;
         };
         downloadJSON(generateJSONDataURI());
-    })
+    });
+
+    document.getElementById('upload-set').addEventListener('click', _ => {
+        document.getElementById('setfile').click();
+    });
 
     document.getElementById('setfile').addEventListener('change', evt => {
         const file = evt.target.files[0];
@@ -88,5 +98,3 @@ function main() {
         });
     });
 };
-
-main();

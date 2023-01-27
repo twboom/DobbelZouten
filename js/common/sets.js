@@ -1,3 +1,6 @@
+let readyState = false;
+let readyPromise;
+
 const IonSets = [];
 
 IonSets.IonSet = class {
@@ -10,7 +13,7 @@ IonSets.IonSet = class {
             let char = name[i];
             if (/^[A-Za-z0-9 ]*$/.test(char)) {
                 if (char === ' ') { char = '-' }
-                this.slug += char
+                this.slug += char.toLowerCase();
             } else {
                 continue
             };
@@ -63,14 +66,29 @@ function init() {
         console.log('LS: Problem with the IonSets storage item, resetting.');
     };
 
-    fetch('assets/ions.json')
+    readyPromise = new Promise((resolve, reject) => {
+        fetch('assets/ions.json')
             .then(r => r.json())
             .then(json => {
                 const set = new IonSets.IonSet('DobbelZouten Default IonSet', json);
                 set.save();
+                readyState = true;
+                resolve();
             });
+    });
 };
 
 init();
+
+IonSets.onReady = function(resolve) {
+    return new Promise(async _ => {
+        if (readyState) { resolve(); return };
+        console.log('not yet')
+        readyPromise.then(_ => {
+            resolve();
+            console.log('now');
+        });
+    });
+};
 
 export default IonSets;

@@ -1,7 +1,6 @@
 import { Ion } from "../common/ionComponent.js"
 import * as history from "./history.js"
 import { currentIonSet } from "./main.js"
-import IonSets from "../common/sets.js";
 
 let ionSet;
 
@@ -94,10 +93,13 @@ function shuffle([...arr]) {
   return arr;
 }
 
-export function init() {
+export function updateIonSet() {
   ionSet = currentIonSet;
+};
 
-  console.log(currentIonSet)
+export function init() {
+
+  updateIonSet();
 
   document.getElementById('button').addEventListener('click', evt => {
     const btn = evt.target;

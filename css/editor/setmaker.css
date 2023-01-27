@@ -5,10 +5,12 @@
 div.split-container {
     display: flex;
     width: 50%;
+    justify-content: stretch;
 }
 
 div.split {
-    width: 50%;
+    flex-basis: 50%;
+    flex-grow: 1;
 };
 
 p.ion {

@@ -8,11 +8,12 @@ export let currentIonSet = {};
 
 export function updateIonSet(newSet) {
     currentIonSet = newSet;
+    scroller.updateIonSet();
 };
 
 IonSets.onReady(_ => {
     console.log('gettin ready')
-    currentIonSet = IonSets.get('dobbelzouten-default-ionset').json.contents
+    currentIonSet = IonSets.get('dobbelzouten-default-ionset').contents
     scroller.init();
     history.init();
     modal.init();

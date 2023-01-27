@@ -1,10 +1,13 @@
 import { parseIonString } from "./text-ion-parser.js";
 import { Ion } from "../common/ionComponent.js";
+import IonSets from "../common/sets.js";
 
 let currentIonSet = {
     "positive": [],
     "negative": [],
 };
+
+let currentIonSetObj = new IonSets.IonSet('Unnamed set' + new Date(Date.now()).toDateString());
 
 function addToSet(ion) {
     // const ionLiElement = `<li class="ion">${new Ion(ion).html()} <></li>`
@@ -30,6 +33,9 @@ function addToSet(ion) {
         currentIonSet.negative.push(ion);
         document.getElementById('negative-ions').appendChild(ionLiElement);
     };
+
+    currentIonSetObj.contents = currentIonSet;
+    currentIonSetObj.save();
 };
 
 function generateJSONDataURI() {
@@ -52,6 +58,7 @@ function handleFinishInput() {
     const inputEl = document.getElementById('text-input');
     addToSet(parseIonString(inputEl.value));
     inputEl.value = '';
+
 };
 
 function renderSubset(subset) {

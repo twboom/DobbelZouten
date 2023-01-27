@@ -5,12 +5,12 @@ IonSets.IonSet = class {
         this.name = name;
         this.contents = contents;
         this.slug = '';
-
-        for (let i = 0; i < name.lenth; i++) {
+        
+        for (let i=0; i < name.length; i++) {
             let char = name[i];
             if (/^[A-Za-z0-9 ]*$/.test(char)) {
                 if (char === ' ') { char = '-' }
-                slug += char
+                this.slug += char
             } else {
                 continue
             };
@@ -51,10 +51,9 @@ IonSets.set = function(slug, value) {
 function init() {
     const sets = localStorage.getItem('ionsets');
 
-    if (sets === undefined) {
+    if (sets === undefined || sets === null) {
         localStorage.setItem('ionsets', '{}');
         console.warn('LS: No IonSets found');
-        return;
     };
 
     try {
@@ -63,6 +62,13 @@ function init() {
         localStorage.setItem('ionsets', '{}');
         console.log('LS: Problem with the IonSets storage item, resetting.');
     };
+
+    fetch('assets/ions.json')
+            .then(r => r.json())
+            .then(json => {
+                const set = new IonSets.IonSet('DobbelZouten Default IonSet', json);
+                set.save();
+            });
 };
 
 init();

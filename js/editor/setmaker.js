@@ -7,7 +7,7 @@ let currentIonSet = {
     "negative": [],
 };
 
-let currentIonSetObj = new IonSets.IonSet('Unnamed set' + new Date(Date.now()).toDateString());
+let currentIonSetObj = new IonSets.IonSet('Unnamed set ' + new Date(Date.now()).toDateString());
 
 function addToSet(ion) {
     // const ionLiElement = `<li class="ion">${new Ion(ion).html()} <></li>`
@@ -103,5 +103,10 @@ export function init() {
             renderSubset(json.positive);
             renderSubset(json.negative);
         });
+    });
+
+    document.getElementById('set-name').addEventListener('change', evt => {
+        currentIonSetObj.updateName(evt.target.value);
+        console.log(currentIonSetObj)
     });
 };

@@ -33,11 +33,21 @@ IonSets.IonSet = class {
     };
 
     save() {
-        this.id = IonSets.set(this.id, this.json);
+        if (validateContents(this.contents)) {
+            this.id = IonSets.set(this.id, this.json);
+            return true;
+        } else {
+            return false;
+        };
     };
 
     update(newContents) {
         this.contents = newContents;
+        this.save();
+    };
+
+    updateName(newName) {
+        this.name = newName;
         this.save();
     };
 
@@ -70,6 +80,17 @@ IonSets.set = function(id, value) {
     sets[id] = value;
     localStorage.setItem('ionsets', JSON.stringify(sets));
     return id;
+};
+
+function validateContents(contents) {
+    try {
+        if (contents.positive.length <= 0) { return false };
+        if (contents.negative.length <= 0) { return false };
+    } catch {
+        return false;
+    };
+
+    return true;
 };
 
 function init() {

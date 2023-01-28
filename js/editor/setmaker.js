@@ -9,7 +9,7 @@ let currentIonSet = {
 
 let currentIonSetObj = new IonSets.IonSet('Unnamed set ' + new Date(Date.now()).toDateString());
 
-function addToSet(ion) {
+function addToSet(ion, onlyRender=false) {
     // const ionLiElement = `<li class="ion">${new Ion(ion).html()} <></li>`
     const ionLiElement = document.createElement('li');
     ionLiElement.classList.add('ion')
@@ -23,6 +23,8 @@ function addToSet(ion) {
         currentIonSet.positive = currentIonSet.positive.filter(el => el !== ion);
         currentIonSet.negative = currentIonSet.negative.filter(el => el !== ion);
         ionLiElement.remove();
+        currentIonSetObj.contents = currentIonSet;
+        currentIonSetObj.save();
     });
     ionLiElement.appendChild(deleteIon);
     if (ion.charge.includes('+')) {
@@ -34,8 +36,12 @@ function addToSet(ion) {
         document.getElementById('negative-ions').appendChild(ionLiElement);
     };
 
-    currentIonSetObj.contents = currentIonSet;
-    currentIonSetObj.save();
+    if (!onlyRender) {
+        currentIonSetObj.contents = currentIonSet;
+        currentIonSetObj.save();
+    } else {
+        console.log('only render')
+    }
 };
 
 function generateJSONDataURI() {
@@ -63,8 +69,26 @@ function handleFinishInput() {
 
 function renderSubset(subset) {
     for (let i = 0; i < subset.length; i++) {
-        addToSet(subset[i])
+        addToSet(subset[i], true)
     };
+};
+
+function loadNewSet(ionSet) {
+    console.log(ionSet)
+    if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
+        const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
+        if (!areYouSure) {
+            return false;
+        };
+    };
+
+    
+    currentIonSetObj = new IonSets.IonSet(ionSet.name, {}, ionSet.id);
+    
+    renderSubset(ionSet.contents.positive);
+    renderSubset(ionSet.contents.negative);
+
+    return true
 };
 
 export function init() {
@@ -107,6 +131,21 @@ export function init() {
 
     document.getElementById('set-name').addEventListener('change', evt => {
         currentIonSetObj.updateName(evt.target.value);
-        console.log(currentIonSetObj)
     });
+
+    const sets = IonSets.all();
+
+    sets.forEach(set => {
+        const option = document.createElement('option');
+
+        option.innerText = set.name;
+        option.value = set.slug;
+
+        document.getElementById('set-select').appendChild(option);
+    })
+
+    document.getElementById('set-select').addEventListener('change', evt => {
+        const set = IonSets.get(evt.target.value)
+        loadNewSet(set)
+    })
 };

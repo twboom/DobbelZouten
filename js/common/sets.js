@@ -4,10 +4,11 @@ let readyPromise;
 const IonSets = [];
 
 IonSets.IonSet = class {
-    constructor(name, contents) {
+    constructor(name, contents, id) {
         this.name = name;
         this.contents = contents;
         this.id = 'last';
+        if (id !== undefined) { this.id = id; };
     };
 
     get slug() {
@@ -35,6 +36,7 @@ IonSets.IonSet = class {
     save() {
         if (validateContents(this.contents)) {
             this.id = IonSets.set(this.id, this.json);
+            console.log(this.id)
             return true;
         } else {
             return false;
@@ -71,7 +73,8 @@ IonSets.get = function(id, type='slug') {
     let set = sets.find( ({ slug }) => slug == id );
     if (type === 'id') { set = sets[id]; };
     if (set === undefined) { return null };
-    return new IonSets.IonSet(set.name, set.contents);
+    const index = sets.indexOf(set);
+    return new IonSets.IonSet(set.name, set.contents, index);
 };
 
 IonSets.set = function(id, value) {

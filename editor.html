@@ -45,11 +45,16 @@
             <div class="split">
                 <div class="input-field">
                     <label for="set-select">Selecteer set:</label>
-                    <select name="set-select" id="set-select"></select>
+                    <select name="set-select" id="set-select">
+                        <option value="none">Nieuwe set</option>
+                    </select>
                 </div>
                 <div class="input-field">
                     <label for="set-name">Naam set:</label>
                     <input type="text" name="set-name" id="set-name" placeholder="Geef deze set een naam...">
+                </div>
+                <div class="input-field">
+                    <button id="duplicate">Dupliceer deze set</button>
                 </div>
             </div>
         </div>

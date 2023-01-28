@@ -4,11 +4,13 @@ let readyPromise;
 const IonSets = [];
 
 IonSets.IonSet = class {
-    constructor(name, contents, id) {
+    constructor(name, contents, id, constant=false) {
         this.name = name;
         this.contents = contents;
         this.id = 'last';
         if (id !== undefined) { this.id = id; };
+        if (constant !== true) { constant = false };
+        this.constant = constant;
     };
 
     get slug() {
@@ -30,10 +32,12 @@ IonSets.IonSet = class {
             'name': this.name,
             'slug': this.slug,
             'contents': this.contents,
+            'constant': this.constant,
         };
     };
 
-    save() {
+    save(constantOverwrite=false) {
+        if (this.constant && !constantOverwrite) { return false; } else { console.log('protected ', this.constant) };
         if (validateContents(this.contents)) {
             this.id = IonSets.set(this.id, this.json);
             console.log(this.id)
@@ -74,7 +78,7 @@ IonSets.get = function(id, type='slug') {
     if (type === 'id') { set = sets[id]; };
     if (set === undefined) { return null };
     const index = sets.indexOf(set);
-    return new IonSets.IonSet(set.name, set.contents, index);
+    return new IonSets.IonSet(set.name, set.contents, index, set.constant);
 };
 
 IonSets.set = function(id, value) {
@@ -124,8 +128,8 @@ function init() {
                     return;
                 };
             };
-            const set = new IonSets.IonSet('DobbelZouten Default IonSet', json);
-            set.save();
+            const set = new IonSets.IonSet('DobbelZouten Default IonSet', json, undefined, true);
+            set.save(true);
             readyState = true;
             resolve();
             });

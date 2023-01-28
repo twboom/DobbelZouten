@@ -28,15 +28,19 @@ function addToSet(ion, onlyRender=false) {
     });
     ionLiElement.appendChild(deleteIon);
     if (ion.charge.includes('+')) {
-        currentIonSet.positive.push(ion);
         document.getElementById('positive-ions').appendChild(ionLiElement)
     };
     if (ion.charge.includes('-')) {
-        currentIonSet.negative.push(ion);
         document.getElementById('negative-ions').appendChild(ionLiElement);
     };
 
     if (!onlyRender) {
+        if (ion.charge.includes('+')) {
+            currentIonSet.positive.push(ion);
+        };
+        if (ion.charge.includes('-')) {
+            currentIonSet.negative.push(ion);
+        };
         currentIonSetObj.contents = currentIonSet;
         currentIonSetObj.save();
     } else {
@@ -76,19 +80,49 @@ function renderSubset(subset) {
 function loadNewSet(ionSet) {
     console.log(ionSet)
     if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
-        const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
+        // const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
+        const areYouSure = true;
         if (!areYouSure) {
             return false;
         };
     };
 
+    document.getElementById('set-name').value = ionSet.name;
     
-    currentIonSetObj = new IonSets.IonSet(ionSet.name, {}, ionSet.id);
+    currentIonSetObj = ionSet;
+    currentIonSet = ionSet.contents
+
+    document.getElementById('positive-ions').innerHTML = '';
+    document.getElementById('negative-ions').innerHTML = '';
     
     renderSubset(ionSet.contents.positive);
     renderSubset(ionSet.contents.negative);
 
     return true
+};
+
+function loadSetlist(target) {
+    if (target === undefined) { target ='___create-new-set-reload'; };
+
+    const sets = IonSets.all();
+
+    document.getElementById('set-select').innerHTML = '';
+
+    const emptyOption = document.createElement('option');
+    emptyOption.innerText = '[Nieuwe set]';
+    emptyOption.value = '___create-new-set-reload';
+    document.getElementById('set-select').appendChild(emptyOption);
+
+    sets.forEach(set => {
+        const option = document.createElement('option');
+
+        option.innerText = set.name;
+        option.value = set.slug;
+
+        document.getElementById('set-select').appendChild(option);
+    });
+
+    document.getElementById('set-select').value = target;
 };
 
 export function init() {
@@ -131,21 +165,22 @@ export function init() {
 
     document.getElementById('set-name').addEventListener('change', evt => {
         currentIonSetObj.updateName(evt.target.value);
+        loadSetlist(evt.target.value);
     });
 
-    const sets = IonSets.all();
-
-    sets.forEach(set => {
-        const option = document.createElement('option');
-
-        option.innerText = set.name;
-        option.value = set.slug;
-
-        document.getElementById('set-select').appendChild(option);
-    })
+    loadSetlist();
 
     document.getElementById('set-select').addEventListener('change', evt => {
+        if (evt.target.value == '___create-new-set-reload') { location.reload(); };
         const set = IonSets.get(evt.target.value)
         loadNewSet(set)
-    })
+    });
+
+    document.getElementById('duplicate').addEventListener('click', _ => {
+        const newName = prompt('Geef een naam op voor het duplicaat.');
+        const newSet = new IonSets.IonSet(newName, currentIonSet, 'last', false);
+        loadNewSet(newSet);
+        currentIonSetObj.save();
+        loadSetlist(newSet.slug);
+    });
 };

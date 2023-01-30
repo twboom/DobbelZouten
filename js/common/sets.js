@@ -51,10 +51,9 @@ IonSets.IonSet = class {
     };
 
     save(constantOverwrite=false) {
-        if (this.constant && !constantOverwrite) { return 'protected'; } else { console.log('protected ', this.constant) };
+        if (this.constant && !constantOverwrite) { return 'protected'; };
         if (validateContents(this.contents)) {
             this.id = IonSets.set(this.id, this.json);
-            console.log(this.id)
             return true;
         } else {
             return false;
@@ -79,6 +78,11 @@ IonSets.IonSet = class {
 
     contentsEquals(other) {
         return JSON.stringify(this.contents) === JSON.stringify(other);
+    };
+
+    delete() {
+        const success = IonSets.delete(this.id);
+        return success;
     };
 };
 
@@ -127,6 +131,18 @@ IonSets.set = function(id, value) {
     sets[id] = value;
     localStorage.setItem('ionsets', JSON.stringify(sets));
     return id;
+};
+
+IonSets.delete = function(id) {
+    let sets = JSON.parse(localStorage.getItem('ionsets'));
+    if (id === 'last') { id = sets.length; };
+    if (sets[id] === undefined) { return 'not-found'; }
+    if (sets[id].constant) { return 'protected'; };
+    console.log(IonSets.get(id, 'id'));
+    console.log(sets[id])
+    sets.splice(id, 1)
+    localStorage.setItem('ionsets', JSON.stringify(sets));
+    return true
 };
 
 function validateContents(contents) {

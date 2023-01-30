@@ -201,4 +201,22 @@ export function init() {
         currentIonSetObj.save();
         loadSetlist(newSet.slug);
     });
+
+    document.getElementById('delete-set').addEventListener('click', _ => {
+        if (currentIonSetObj.constant) {
+            alert('Deze set is beschermd en is niet te verwijderen!');
+            return;
+        }
+        if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
+            const areYouSure = confirm(`Weet je zeker dat je dit wilt doen? Hiermee gooi je ${currentIonSetObj.name} weg! Dit is niet ongedaan te maken!`);
+            if (!areYouSure) {
+                evt.target.value = '';
+                return;
+            };
+        };
+        const success = currentIonSetObj.delete();
+        if (success !== true) {
+            alert('Deze set is niet te verwijderen!')
+        };
+    });
 };

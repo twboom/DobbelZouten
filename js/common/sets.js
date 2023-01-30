@@ -4,13 +4,27 @@ let readyPromise;
 const IonSets = [];
 
 IonSets.IonSet = class {
-    constructor(name, contents, id, constant=false) {
+    constructor(name, contents, id, constant=false, intermediate=true) {
         this.name = name;
         this.contents = contents;
         this.id = 'last';
         if (id !== undefined) { this.id = id; };
         if (constant !== true) { constant = false };
         this.constant = constant;
+
+        if (!intermediate) {
+            if (IonSets.exists(name, 'name')) {
+                console.log(name, 'exists')
+                let count = 0;
+                for (let i = 1; i < 1025; i++) {
+                    if (!IonSets.exists(name + ` (${i})`, 'name')) {
+                        count = i;
+                        break;
+                    };
+                };
+                this.name = name + ` (${count})`
+            };
+        };
     };
 
     get slug() {
@@ -37,7 +51,7 @@ IonSets.IonSet = class {
     };
 
     save(constantOverwrite=false) {
-        if (this.constant && !constantOverwrite) { return false; } else { console.log('protected ', this.constant) };
+        if (this.constant && !constantOverwrite) { return 'protected'; } else { console.log('protected ', this.constant) };
         if (validateContents(this.contents)) {
             this.id = IonSets.set(this.id, this.json);
             console.log(this.id)
@@ -58,8 +72,9 @@ IonSets.IonSet = class {
         const success = this.save();
         if (!success) {
             this.name = oldName;
+            return 'protected';
         };
-        return success;
+        return true;
     };
 
     contentsEquals(other) {
@@ -80,10 +95,30 @@ IonSets.all = function() {
 IonSets.get = function(id, type='slug') {
     const sets = JSON.parse(localStorage.getItem('ionsets'))
     let set = sets.find( ({ slug }) => slug == id );
+    if (type === 'name') { set = sets.find( ({ slug }) => slug == id ); };
     if (type === 'id') { set = sets[id]; };
     if (set === undefined) { return null };
     const index = sets.indexOf(set);
     return new IonSets.IonSet(set.name, set.contents, index, set.constant);
+};
+
+IonSets.isConstant = function(id, type='slug') {
+    const sets = JSON.parse(localStorage.getItem('ionsets'))
+    let set = sets.find( ({ slug }) => slug == id );
+    if (type === 'name') { set = sets.find( ({ slug }) => slug == id ); };
+    if (type === 'id') { set = sets[id]; };
+    if (set === undefined) { return null };
+    return set.constant;
+};
+
+IonSets.exists = function(id, type='slug') {
+    const sets = JSON.parse(localStorage.getItem('ionsets'))
+    let set = sets.find( ({ slug }) => slug == id );
+    if (type === 'name') { set = sets.find( ({ name }) => name == id ); };
+    if (type === 'id') { set = sets[id]; };
+    // console.log(type, id, set)
+    if (set === undefined) { return false; }
+    else { return true; };
 };
 
 IonSets.set = function(id, value) {
@@ -146,10 +181,8 @@ init();
 IonSets.onReady = function(resolve) {
     return new Promise(async _ => {
         if (readyState) { resolve(); return };
-        console.log('not yet')
         readyPromise.then(_ => {
             resolve();
-            console.log('now');
         });
     });
 };

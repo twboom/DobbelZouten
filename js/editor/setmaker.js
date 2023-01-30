@@ -7,7 +7,7 @@ let currentIonSet = {
     "negative": [],
 };
 
-let currentIonSetObj = new IonSets.IonSet('Unnamed set ' + new Date(Date.now()).toDateString());
+let currentIonSetObj = new IonSets.IonSet('Unnamed set ' + new Date(Date.now()).toDateString(), currentIonSet, 'last', false, false);
 
 function addToSet(ion, onlyRender=false) {
     // const ionLiElement = `<li class="ion">${new Ion(ion).html()} <></li>`
@@ -24,7 +24,7 @@ function addToSet(ion, onlyRender=false) {
         currentIonSet.negative = currentIonSet.negative.filter(el => el !== ion);
         currentIonSetObj.contents = currentIonSet;
         const success = currentIonSetObj.save();
-        if (!success) {
+        if (success === 'protected') {
             alert('Je kan deze set niet bewerken!');
             if (ion.charge.includes('+')) {
                 currentIonSet.positive.push(ion);
@@ -168,14 +168,16 @@ export function init() {
                     return;
                 };
             }
-            renderSubset(json.positive);
-            renderSubset(json.negative);
+            const set = new IonSets.IonSet('Uploaded set ' + new Date(Date.now()).toDateString(), json, 'last', false, false);
+            set.save();
+            loadNewSet(set);
+            loadSetlist(set.slug);
         });
     });
 
     document.getElementById('set-name').addEventListener('change', evt => {
-        const succes = currentIonSetObj.updateName(evt.target.value);
-        if (!succes) {
+        const success = currentIonSetObj.updateName(evt.target.value);
+        if (success === 'protected') {
             evt.target.value = currentIonSetObj.name;
             alert('Je kan deze set niet bewerken!');
             return;
@@ -193,7 +195,7 @@ export function init() {
 
     document.getElementById('duplicate').addEventListener('click', _ => {
         const newName = prompt('Geef een naam op voor het duplicaat.');
-        const newSet = new IonSets.IonSet(newName, currentIonSet, 'last', false);
+        const newSet = new IonSets.IonSet(newName, currentIonSet, 'last', false, false);
         loadNewSet(newSet);
         currentIonSetObj.save();
         loadSetlist(newSet.slug);

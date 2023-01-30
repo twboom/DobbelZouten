@@ -53,9 +53,7 @@ function addToSet(ion, onlyRender=false) {
         };
         currentIonSetObj.contents = currentIonSet;
         currentIonSetObj.save();
-    } else {
-        console.log('only render')
-    }
+    };
 };
 
 function generateJSONDataURI() {
@@ -88,7 +86,6 @@ function renderSubset(subset) {
 };
 
 function loadNewSet(ionSet) {
-    console.log(ionSet)
     if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
         // const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
         const areYouSure = true;
@@ -216,7 +213,9 @@ export function init() {
         };
         const success = currentIonSetObj.delete();
         if (success !== true) {
-            alert('Deze set is niet te verwijderen!')
+            alert('Deze set is niet te verwijderen!');
+            return;
         };
+        location.reload();
     });
 };

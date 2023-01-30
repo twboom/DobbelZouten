@@ -161,17 +161,18 @@ export function init() {
         if (file === undefined) { return; };
         file.text().then(text => {
             const json = JSON.parse(text);
-            if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
-                const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
-                if (!areYouSure) {
-                    evt.target.value = '';
-                    return;
-                };
-            }
+            // if (currentIonSet.positive.length !== 0 || currentIonSet.negative.length !== 0) {
+            //     const areYouSure = confirm('Weet je zeker dat je dit wilt doen? Hiermee gooi je de huidige set weg!');
+            //     if (!areYouSure) {
+            //         evt.target.value = '';
+            //         return;
+            //     };
+            // }
             const set = new IonSets.IonSet('Uploaded set ' + new Date(Date.now()).toDateString(), json, 'last', false, false);
             set.save();
             loadNewSet(set);
             loadSetlist(set.slug);
+            evt.target.value = '';
         });
     });
 

@@ -53,8 +53,13 @@ IonSets.IonSet = class {
     };
 
     updateName(newName) {
+        const oldName = this.name;
         this.name = newName;
-        this.save();
+        const success = this.save();
+        if (!success) {
+            this.name = oldName;
+        };
+        return success;
     };
 
     contentsEquals(other) {

@@ -22,9 +22,19 @@ function addToSet(ion, onlyRender=false) {
         if (!areYouSure) { return; };
         currentIonSet.positive = currentIonSet.positive.filter(el => el !== ion);
         currentIonSet.negative = currentIonSet.negative.filter(el => el !== ion);
-        ionLiElement.remove();
         currentIonSetObj.contents = currentIonSet;
-        currentIonSetObj.save();
+        const success = currentIonSetObj.save();
+        if (!success) {
+            alert('Je kan deze set niet bewerken!');
+            if (ion.charge.includes('+')) {
+                currentIonSet.positive.push(ion);
+            };
+            if (ion.charge.includes('-')) {
+                currentIonSet.negative.push(ion);
+            };
+            return;
+        };
+        ionLiElement.remove();
     });
     ionLiElement.appendChild(deleteIon);
     if (ion.charge.includes('+')) {
@@ -164,7 +174,12 @@ export function init() {
     });
 
     document.getElementById('set-name').addEventListener('change', evt => {
-        currentIonSetObj.updateName(evt.target.value);
+        const succes = currentIonSetObj.updateName(evt.target.value);
+        if (!succes) {
+            evt.target.value = currentIonSetObj.name;
+            alert('Je kan deze set niet bewerken!');
+            return;
+        };
         loadSetlist(evt.target.value);
     });
 

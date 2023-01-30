@@ -22,11 +22,11 @@ div.action-button:hover {
     padding-right: 48px;
 }
 
-div.action-button:active svg {
+div.action-button:active img {
     transform: scale(0.95);
 }
 
-div.action-button > svg {
+div.action-button > img {
     transition: transform 0.2s;
 }
 

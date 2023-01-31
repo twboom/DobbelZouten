@@ -26,34 +26,7 @@
         </section>
     </header>
     <div id="app">
-        <div class="split-container">
-            <div class="split split-container">
-                <div class="input-field split">
-                    <input style="display: none;" type="file" name="setfile" id="setfile">
-                    <div id="upload-set" class="svg-button">
-                        <img src="assets/icons/upload.svg" alt="">
-                    </div>
-                    <p class="svg-label">Upload</p>
-                </div>
-                <div class="input-field split">
-                    <div id="download-set" class="svg-button">
-                        <img src="assets/icons/download.svg" alt="">
-                    </div>
-                    <p class="svg-label">Download</p>
-                </div>
-                <div class="input-field split">
-                    <div id="delete-set" class="svg-button">
-                        <img src="assets/icons/trash.svg" alt="">
-                    </div>
-                    <p class="svg-label">Verwijder</p>
-                </div>
-                <div class="input-field split">
-                    <div id="duplicate" class="svg-button">
-                        <img src="assets/icons/clone.svg" alt="">
-                    </div>
-                    <p class="svg-label">Dupliceer</p>
-                </div>
-            </div>
+        <div class="split-container" style="width: 60%;">
             <div class="split">
                 <div class="input-field special">
                     <label for="set-select">Selecteer set:</label>
@@ -65,19 +38,43 @@
                     <label for="set-name">Naam set:</label>
                     <input type="text" name="set-name" id="set-name" placeholder="Geef deze set een naam...">
                 </div>
+                <div class="split-container">
+                    <div class="input-field split">
+                        <input style="display: none;" type="file" name="setfile" id="setfile">
+                        <div id="upload-set" class="svg-button">
+                            <img src="assets/icons/upload.svg" alt="">
+                        </div>
+                        <p class="svg-label">Upload</p>
+                    </div>
+                    <div class="input-field split">
+                        <div id="download-set" class="svg-button">
+                            <img src="assets/icons/download.svg" alt="">
+                        </div>
+                        <p class="svg-label">Download</p>
+                    </div>
+                    <div class="input-field split">
+                        <div id="delete-set" class="svg-button">
+                            <img src="assets/icons/trash.svg" alt="">
+                        </div>
+                        <p class="svg-label">Verwijder</p>
+                    </div>
+                    <div class="input-field split">
+                        <div id="duplicate" class="svg-button">
+                            <img src="assets/icons/clone.svg" alt="">
+                        </div>
+                        <p class="svg-label">Dupliceer</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <hr style="width: 50%; border-style: dashed;">
-        <div id="inputs" class="split-container">
-            <div class="split" style="text-align: center;">
-                <div class="input-field">
-                    <label for="text-input">Ion-String:</label>
-                    <input type="text" name="text-input" id="text-input">
+            <div class="split split-container">
+                <div id="ion-input" class="input-field split">
+                    <h1>Vul de Ion-String in</h1>
+                    <input type="text" name="text-input" id="text-input" placeholder="Ion-String...">
                     <input type="submit" id="finish-input" value="Voeg toe">
                     <p>Lees <a href="https://github.com/twboom/DobbelZouten/wiki/Ion-String" target="_blank" rel="noopener noreferrer">op deze pagina</a> meer over Ion-Strings.</p>
                 </div>
-            </div> 
-        </div>
+            </div>
+        </div>      
         <hr style="width: 50%; border-style: dashed;">
         <div id="set-display" class="split-container">
             <div class="ion-category split">

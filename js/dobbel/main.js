@@ -12,8 +12,7 @@ export function updateIonSet(newSet) {
 };
 
 IonSets.onReady(_ => {
-    console.log('gettin ready')
-    currentIonSet = IonSets.get('dobbelzouten-default-ionset').contents
+    currentIonSet = IonSets.get('dobbelzouten-basis-ionset').contents
     scroller.init();
     history.init();
     modal.init();

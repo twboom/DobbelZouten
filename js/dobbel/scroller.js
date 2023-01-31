@@ -93,16 +93,19 @@ function shuffle([...arr]) {
   return arr;
 }
 
-export function init() {
+export function updateIonSet() {
   ionSet = currentIonSet;
+};
+
+export function init() {
+
+  updateIonSet();
 
   document.getElementById('button').addEventListener('click', evt => {
     const btn = evt.target;
     if (btn.dataset.action === 'spin') { spin(); btn.innerHTML = 'Reset'; btn.dataset.action = 'reset' }
     else if (btn.dataset.action === 'reset') { primeScrollers(); btn.innerHTML = 'Dobbel!'; btn.dataset.action = 'spin' };
-  })
-  
-  fetch('assets/ions.json')
-    .then(r => r.json())
-    .then(json => { ionSet = json; primeScrollers(); }) 
+  });
+
+  primeScrollers();
 };

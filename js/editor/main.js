@@ -1,3 +1,6 @@
 import * as setmaker from "./setmaker.js";
+import IonSets from "../common/sets.js";
 
-setmaker.init();
+IonSets.onReady(_ => {
+    setmaker.init();
+});

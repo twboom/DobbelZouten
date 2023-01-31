@@ -28,17 +28,7 @@ IonSets.IonSet = class {
     };
 
     get slug() {
-        let slug = '';
-        for (let i=0; i < this.name.length; i++) {
-            let char = this.name[i];
-            if (/^[A-Za-z0-9 ]*$/.test(char)) {
-                if (char === ' ') { char = '-' }
-                slug += char.toLowerCase();
-            } else {
-                continue
-            };
-        };
-        return slug;
+        return IonSets.getSlug(this.name);
     };
 
     get json() {
@@ -94,6 +84,20 @@ IonSets.all = function() {
         sets.push(new IonSets.IonSet(set.name, set.contents))
     });
     return sets;
+};
+
+IonSets.getSlug = function(fullName) {
+    let slug = '';
+    for (let i=0; i < fullName.length; i++) {
+        let char = fullName[i];
+        if (/^[A-Za-z0-9 ]*$/.test(char)) {
+            if (char === ' ') { char = '-' }
+            slug += char.toLowerCase();
+        } else {
+            continue
+        };
+    };
+    return slug;
 };
 
 IonSets.get = function(id, type='slug') {
@@ -176,7 +180,7 @@ function init() {
         fetch('assets/ions.json')
         .then(r => r.json())
         .then(json => {
-            let currentDefault = IonSets.get('dobbelzouten-default-ionset');
+            let currentDefault = IonSets.get('dobbelzouten-basis-ionset');
             if (currentDefault !== null) {
                 if (currentDefault.contentsEquals(json)) {
                     readyState = true;
@@ -184,7 +188,7 @@ function init() {
                     return;
                 };
             };
-            const set = new IonSets.IonSet('DobbelZouten Default IonSet', json, undefined, true);
+            const set = new IonSets.IonSet('DobbelZouten Basis IonSet', json, undefined, true);
             set.save(true);
             readyState = true;
             resolve();

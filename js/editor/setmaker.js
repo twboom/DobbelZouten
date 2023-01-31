@@ -180,7 +180,7 @@ export function init() {
             alert('Je kan deze set niet bewerken!');
             return;
         };
-        loadSetlist(evt.target.value);
+        loadSetlist(IonSets.getSlug(evt.target.value));
     });
 
     loadSetlist();
@@ -218,4 +218,6 @@ export function init() {
         };
         location.reload();
     });
+
+    document.getElementById('set-name').value = currentIonSetObj.name
 };

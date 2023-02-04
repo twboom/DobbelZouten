@@ -63,7 +63,7 @@ function generateJSONDataURI() {
 };
 
 function downloadJSON(dataURI) {
-    const setName = 'DobbelZouten-IonSet'
+    const setName = currentIonSetObj.slug;
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataURI);
     downloadAnchorNode.setAttribute("download", setName + ".json");

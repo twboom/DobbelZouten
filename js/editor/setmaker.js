@@ -165,7 +165,9 @@ export function init() {
             //         return;
             //     };
             // }
-            const set = new IonSets.IonSet('Uploaded set ' + new Date(Date.now()).toDateString(), json, 'last', false, false);
+            let name = file.name.replace('.json', '').replace('-', ' ');
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            const set = new IonSets.IonSet(name, json, 'last', false, false);
             set.save();
             loadNewSet(set);
             loadSetlist(set.slug);
